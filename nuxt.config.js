@@ -1,3 +1,10 @@
+const projectRoot = '/my-first-nuxt-app/'
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: projectRoot
+  }
+} : {}
+
 module.exports = {
   /*
   ** Headers of the page
@@ -10,7 +17,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Nuxt.js project' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: `${projectRoot}favicon.ico` }
     ]
   },
   /*
@@ -34,6 +41,9 @@ module.exports = {
         })
       }
     }
+  },
+  router: {
+    ...routerBase
   }
 }
 
